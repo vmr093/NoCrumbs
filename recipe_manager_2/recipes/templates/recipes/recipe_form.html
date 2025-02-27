@@ -2,12 +2,21 @@
 
 {% block content %}
 <div class="container">
-    <h2>{% if form.instance.id %}Edit Recipe{% else %}New Recipe{% endif %}</h2>
-    <form method="post" class="card p-4 shadow">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Save</button>
-        <a href="{% url 'recipe_list' %}" class="btn btn-secondary">Cancel</a>
-    </form>
+    <h2 class="text-center mb-4">{% if form.instance.id %}Edit Recipe{% else %}New Recipe{% endif %}</h2>
+
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            
+            {% for field in form %}
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+            {% endfor %}
+
+            <button type="submit" class="btn-submit">Save Recipe</button>
+        </form>
+
+        <a href="{% url 'recipe_list' %}" class="btn-cancel">Cancel</a>
+    </div>
 </div>
 {% endblock %}

@@ -87,31 +87,76 @@ body {
 }
 
 /* 🎨 Form Styling */
-form {
-    background: #ffebee; /* Soft pinkish background */
-    padding: 20px;
-    border-radius: 10px;
+.form-container {
+    background: #fff6e6; /* Light warm cream */
+    padding: 25px;
+    border-radius: 12px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-    border: 2px solid #d84315; /* Red border */
+    border: 2px solid #8d6e63; /* Brown border */
+    max-width: 600px; /* Set a max width */
+    margin: 0 auto; /* Center the form */
+    text-align: left; /* Align text to the left */
 }
 
-/* 🎨 Delete Confirmation */
-.delete-confirm {
-    background: #ffccbc; /* Warm peach */
-    padding: 20px;
-    border: 2px solid #ff7043;
-    border-radius: 8px;
-    color: #4d2e1f; /* Deep brown text */
-}
-
-/* 🎨 Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #6d4c41; /* Warm brown */
-    color: white;
-    margin-top: 20px;
+/* 📝 Form Fields */
+.form-container label {
+    display: block;
     font-weight: bold;
+    margin-bottom: 5px;
+    color: #4d2e1f; /* Dark brown */
+    text-align: left; /* Left-align labels */
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #8d6e63;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    display: block; /* Ensure full width */
+}
+
+/* 📝 Improve Textarea */
+.form-container textarea {
+    min-height: 120px; /* Larger text area */
+    resize: vertical;
+}
+
+/* 🎨 Submit Button */
+.btn-submit {
+    background-color: #d84315; /* Deep red */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 10px 15px;
+    width: 100%;
+    display: block;
+}
+
+.btn-submit:hover {
+    background-color: #bf360c;
+}
+
+/* 🎨 Cancel Button */
+.btn-cancel {
+    background-color: #8d6e63; /* Warm brown */
+    color: white;
+    border-radius: 6px;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn-cancel:hover {
+    background-color: #5d4037;
 }
 
 /* 🎨 Style for Recipe Manager Title */
@@ -138,4 +183,23 @@ footer {
     margin-right: 8px;
     font-size: 1.6rem;  /* Slightly bigger cookie icon */
     color: #ffcc80;  /* Light orange (cookie color) */
+}
+
+/* 🎨 Delete Confirmation */
+.delete-confirm {
+    background: #ffccbc; /* Warm peach */
+    padding: 20px;
+    border: 2px solid #ff7043;
+    border-radius: 8px;
+    color: #4d2e1f; /* Deep brown text */
+}
+
+/* 🎨 Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #6d4c41; /* Warm brown */
+    color: white;
+    margin-top: 20px;
+    font-weight: bold;
 }
