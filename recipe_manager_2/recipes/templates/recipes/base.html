@@ -35,23 +35,18 @@
     </nav>
 
     <!-- 🏷 Category Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link category-link {% if not selected_category %}active{% endif %}" 
-                   href="{% url 'recipe_list' %}">All</a>
-            </li>
-            {% for category in categories %}
-                <li class="nav-item">
-                    <a class="nav-link category-link {% if selected_category == category.name %}active{% endif %}" 
-                       href="{% url 'recipe_list' %}?category={{ category.name }}">{{ category.name }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-</nav>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link category-link" href="{% url 'recipe_list' %}">All</a></li>
+                {% for category in categories %}
+                    <li class="nav-item">
+                        <a class="nav-link category-link" href="{% url 'recipe_list' %}?category={{ category.name }}">{{ category.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
 
     <div class="container mt-4">
         {% block content %}
@@ -61,7 +56,7 @@
     <!-- 📌 Footer -->
     <footer class="footer mt-auto py-3 bg-dark text-white">
         <div class="container text-center">
-            <p class="mb-0">© 2025 No Crumbs - Created by <strong>Your Name</strong></p>
+            <p class="mb-0">© 2025 No Crumbs - Created by <strong>Viola Ranjha</strong></p>
         </div>
     </footer>
 
