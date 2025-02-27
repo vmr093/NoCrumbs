@@ -162,7 +162,6 @@ body {
     color: white;
 }
 
-
 /* 🎨 Form Styling */
 .form-container {
     background: #fff6e6; /* Light warm cream */
@@ -237,13 +236,12 @@ body {
     background-color: #5d4037;
 }
 
-
 /* 🎨 Recipe Manager Header - Bold, Left-Aligned */
 .recipe-title {
     font-size: 3rem;  /* Increase size */
     font-weight: 700;  /* Make it extra bold */
     color: #8B0000;  /* Deep red */
-    text-align: left;  /* Align to the left */
+    text-align: center;  /* Align to center */
     margin-bottom: 20px;
     text-transform: uppercase;  /* Make it stand out */
     letter-spacing: 2px;  /* Add spacing for a cleaner look */
@@ -276,18 +274,9 @@ body {
     width: 100%;
 }
 
-
-
-
-/* 🎨 Add a small heart emoji for personality */
-footer p {
-    margin: 0;
-    font-family: 'Quicksand', sans-serif;
-}
-
-/* 🎨 Push Pagination Lower */
+/* 🎨 Pagination Styling */
 .pagination-container {
-    margin-top: 40px; /* Moves pagination further down */
+    margin-top: 40px;
     padding-top: 20px;
     text-align: center;
 }

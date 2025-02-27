@@ -9,18 +9,21 @@ from .forms import RecipeForm, RecipeSearchForm
 def recipe_list(request):
     recipes = Recipe.objects.all()
     categories = Category.objects.all()  # Fetch all categories for the second navbar
-    search_form = RecipeSearchForm(request.GET)
 
-    # Apply search and filter logic
+    search_form = RecipeSearchForm(request.GET)
+    selected_category = request.GET.get('category')  # Get category name from URL parameter
+
+    # Apply search logic
     if search_form.is_valid():
         query = search_form.cleaned_data.get('query')
-        category = request.GET.get('category')  # Get category from URL parameter
-
         if query:
             recipes = recipes.filter(Q(name__icontains=query) | Q(ingredients__icontains=query))
 
-        if category and category != "All":
-            recipes = recipes.filter(category=category)
+    # ✅ FIX: Properly filter recipes by category ForeignKey
+    if selected_category and selected_category != "All":
+        category_obj = Category.objects.filter(name=selected_category).first()
+        if category_obj:  # Ensure category exists before filtering
+            recipes = recipes.filter(category=category_obj)
 
     # Paginate results (6 recipes per page)
     paginator = Paginator(recipes, 6)
@@ -30,7 +33,8 @@ def recipe_list(request):
     return render(request, 'recipes/recipe_list.html', {
         'recipes': recipes,
         'search_form': search_form,
-        'categories': categories
+        'categories': categories,
+        'selected_category': selected_category
     })
 
 # 📌 Recipe Detail Page
@@ -88,24 +92,10 @@ def favorite_recipe(request, recipe_id):
     if not created:  # If already favorited, remove it
         favorite.delete()
 
-    return redirect(request.META.get('HTTP_REFERER', 'recipe_list'))  # Redirects back to the previous page
+    return redirect(request.META.get('HTTP_REFERER', 'recipe_list'))  # Redirect back to the previous page
 
 # ❤️ Favorite Recipes List
 @login_required
 def favorite_list(request):
     favorites = Favorite.objects.filter(user=request.user).select_related('recipe')
     return render(request, 'recipes/favorites.html', {'favorites': favorites})
-
-# 📄 List Recipes by Category
-def recipes_by_category(request, category_name):
-    categories = Category.objects.all()
-    recipes = Recipe.objects.filter(category=category_name)
-    paginator = Paginator(recipes, 6)
-    page_number = request.GET.get('page')
-    recipes = paginator.get_page(page_number)
-
-    return render(request, 'recipes/recipe_list.html', {
-        'recipes': recipes,
-        'categories': categories,
-        'selected_category': category_name
-    })
