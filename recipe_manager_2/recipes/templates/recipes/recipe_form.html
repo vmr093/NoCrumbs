@@ -2,21 +2,23 @@
 
 {% block content %}
 <div class="container">
-    <h2 class="text-center mb-4">{% if form.instance.id %}Edit Recipe{% else %}New Recipe{% endif %}</h2>
+    <h1 class="recipe-title">Add a New Recipe</h1>
 
     <div class="form-container">
-        <form method="post">
+        <form method="POST">
             {% csrf_token %}
             
             {% for field in form %}
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                {{ field }}
+                <div class="mb-3">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                </div>
             {% endfor %}
 
-            <button type="submit" class="btn-submit">Save Recipe</button>
+            <button type="submit" class="btn btn-submit">Save Recipe</button>
+            <a href="{% url 'recipe_list' %}" class="btn btn-cancel">Cancel</a>
         </form>
-
-        <a href="{% url 'recipe_list' %}" class="btn-cancel">Cancel</a>
     </div>
 </div>
 {% endblock %}
+

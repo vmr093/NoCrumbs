@@ -176,7 +176,83 @@ body {
     font-family: 'Merriweather', serif;
 }
 
-/* 🎨 Footer */
+/* 🎨 Ensure Labels Stay Above Fields */
+.form-container label {
+    display: block;  /* Ensure labels appear above fields */
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #4d2e1f; /* Dark brown */
+}
+
+/* 🎨 Fix Input Field Alignment */
+.form-container input,
+.form-container textarea,
+.form-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #8d6e63;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    display: block; /* Ensure full width */
+}
+
+/* 📝 Improve Textarea */
+.form-container textarea {
+    min-height: 120px; /* Larger text area */
+    resize: vertical;
+}
+
+/* 🎨 Submit & Cancel Buttons */
+.btn-submit {
+    background-color: #d84315; /* Deep red */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 10px 15px;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.btn-submit:hover {
+    background-color: #bf360c;
+}
+
+.btn-cancel {
+    background-color: #8d6e63; /* Warm brown */
+    color: white;
+    border-radius: 6px;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn-cancel:hover {
+    background-color: #5d4037;
+}
+
+
+/* 🎨 Recipe Manager Header - Bold, Left-Aligned */
+.recipe-title {
+    font-size: 3rem;  /* Increase size */
+    font-weight: 700;  /* Make it extra bold */
+    color: #8B0000;  /* Deep red */
+    text-align: left;  /* Align to the left */
+    margin-bottom: 20px;
+    text-transform: uppercase;  /* Make it stand out */
+    letter-spacing: 2px;  /* Add spacing for a cleaner look */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for pop effect */
+}
+
+
+
+/* 🎨 Footer Styling */
 footer {
     background: #6d4c41; /* Warm brown */
     color: white;
@@ -185,4 +261,18 @@ footer {
     font-weight: bold;
     margin-top: auto;
     width: 100%;
+    font-size: 1rem;
+}
+
+/* 🎨 Add a small heart emoji for personality */
+footer p {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* 🎨 Push Pagination Lower */
+.pagination-container {
+    margin-top: 40px; /* Moves pagination further down */
+    padding-top: 20px;
+    text-align: center;
 }

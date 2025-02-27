@@ -1,28 +1,28 @@
 from django import forms
-from django.contrib.auth.models import User
-from .models import Recipe
+from .models import Recipe, Category
 
-# Recipe Form
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
-        fields = ['name', 'ingredients', 'instructions', 'prep_time']
+        fields = ['name', 'ingredients', 'instructions', 'prep_time', 'category', 'tags']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter recipe name'}),
+            'ingredients': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'List ingredients'}),
+            'instructions': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Step-by-step instructions'}),
+            'prep_time': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Time in minutes'}),
+            'category': forms.Select(attrs={'class': 'form-control'}),
+            'tags': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Comma-separated tags'}),
+        }
 
-# User Registration Form
-class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
-    password_confirm = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
-
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password']
-
-    def clean(self):
-        cleaned_data = super().clean()
-        password = cleaned_data.get("password")
-        password_confirm = cleaned_data.get("password_confirm")
-
-        if password and password_confirm and password != password_confirm:
-            self.add_error('password_confirm', "Passwords do not match")
-
-        return cleaned_data
+class RecipeSearchForm(forms.Form):
+    query = forms.CharField(
+        required=False, 
+        label="Search Recipes", 
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Search by name or ingredient'})
+    )
+    category = forms.ModelChoiceField(
+        queryset=Category.objects.all(), 
+        required=False, 
+        empty_label="All Categories", 
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
