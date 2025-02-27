@@ -8,28 +8,35 @@ from .forms import RecipeForm, RecipeSearchForm
 # 📄 Recipe List with Search, Category Filter, & Pagination
 def recipe_list(request):
     recipes = Recipe.objects.all()
+    categories = Category.objects.all()  # Fetch all categories for the second navbar
     search_form = RecipeSearchForm(request.GET)
 
+    # Apply search and filter logic
     if search_form.is_valid():
         query = search_form.cleaned_data.get('query')
-        category = search_form.cleaned_data.get('category')
+        category = request.GET.get('category')  # Get category from URL parameter
 
         if query:
             recipes = recipes.filter(Q(name__icontains=query) | Q(ingredients__icontains=query))
 
-        if category:
+        if category and category != "All":
             recipes = recipes.filter(category=category)
 
-    paginator = Paginator(recipes, 6)  # Show 6 recipes per page
+    # Paginate results (6 recipes per page)
+    paginator = Paginator(recipes, 6)
     page_number = request.GET.get('page')
     recipes = paginator.get_page(page_number)
 
-    return render(request, 'recipes/recipe_list.html', {'recipes': recipes, 'search_form': search_form})
+    return render(request, 'recipes/recipe_list.html', {
+        'recipes': recipes,
+        'search_form': search_form,
+        'categories': categories
+    })
 
 # 📌 Recipe Detail Page
 @login_required
 def recipe_detail(request, recipe_id):
-    recipe = get_object_or_404(Recipe, id=recipe_id, user=request.user)
+    recipe = get_object_or_404(Recipe, id=recipe_id)
     is_favorited = Favorite.objects.filter(user=request.user, recipe=recipe).exists()
     return render(request, 'recipes/recipe_detail.html', {'recipe': recipe, 'is_favorited': is_favorited})
 
@@ -45,6 +52,7 @@ def recipe_create(request):
             return redirect('recipe_list')
     else:
         form = RecipeForm()
+    
     return render(request, 'recipes/recipe_form.html', {'form': form})
 
 # ✏️ Edit Recipe
@@ -58,6 +66,7 @@ def recipe_update(request, recipe_id):
             return redirect('recipe_list')
     else:
         form = RecipeForm(instance=recipe)
+    
     return render(request, 'recipes/recipe_form.html', {'form': form})
 
 # 🗑 Delete Recipe
@@ -67,6 +76,7 @@ def recipe_delete(request, recipe_id):
     if request.method == 'POST':
         recipe.delete()
         return redirect('recipe_list')
+    
     return render(request, 'recipes/recipe_confirm_delete.html', {'recipe': recipe})
 
 # ⭐ Favorite Recipe (Toggle)
@@ -78,10 +88,24 @@ def favorite_recipe(request, recipe_id):
     if not created:  # If already favorited, remove it
         favorite.delete()
 
-    return redirect('recipe_list')
+    return redirect(request.META.get('HTTP_REFERER', 'recipe_list'))  # Redirects back to the previous page
 
 # ❤️ Favorite Recipes List
 @login_required
 def favorite_list(request):
     favorites = Favorite.objects.filter(user=request.user).select_related('recipe')
     return render(request, 'recipes/favorites.html', {'favorites': favorites})
+
+# 📄 List Recipes by Category
+def recipes_by_category(request, category_name):
+    categories = Category.objects.all()
+    recipes = Recipe.objects.filter(category=category_name)
+    paginator = Paginator(recipes, 6)
+    page_number = request.GET.get('page')
+    recipes = paginator.get_page(page_number)
+
+    return render(request, 'recipes/recipe_list.html', {
+        'recipes': recipes,
+        'categories': categories,
+        'selected_category': category_name
+    })

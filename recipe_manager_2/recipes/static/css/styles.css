@@ -250,19 +250,34 @@ body {
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for pop effect */
 }
 
+/* 🎨 Category Navbar Text Color */
+.category-link {
+    color: #4d2e1f !important;  /* Dark brown text */
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
+}
 
+/* Underline Effect on Hover */
+.category-link:hover {
+    color: #d84315 !important; /* Deep red */
+    text-decoration: underline;
+}
 
 /* 🎨 Footer Styling */
-footer {
+.footer {
+    text-align: center;
+    padding: 20px;
     background: #6d4c41; /* Warm brown */
     color: white;
-    text-align: center;
-    padding: 15px;
     font-weight: bold;
-    margin-top: auto;
+    position: relative;
+    bottom: 0;
     width: 100%;
-    font-size: 1rem;
 }
+
+
+
 
 /* 🎨 Add a small heart emoji for personality */
 footer p {

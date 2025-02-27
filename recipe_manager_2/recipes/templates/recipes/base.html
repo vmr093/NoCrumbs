@@ -1,61 +1,67 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}  <!-- ✅ Fixes the static file error -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}No Crumbs{% endblock %}</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- FontAwesome for Cookie Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
+    <!-- 🌍 Primary Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand no-crumbs-title" href="{% url 'recipe_list' %}">
-                <i class="fas fa-cookie-bite"></i> No Crumbs
+                🍪 No Crumbs
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'favorite_list' %}">❤️ Favorites</a></li>
-                    
                     {% if user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'recipe_create' %}">➕ Add Recipe</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}?next=/">🚪 Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'recipe_create' %}">Add Recipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'favorite_list' %}">Favorites</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">🔑 Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">📝 Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Sign Up</a></li>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content (Pushes Footer to Bottom) -->
-    <div class="container mt-4 main-content">
+    <!-- 🏷 Category Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link category-link" href="{% url 'recipe_list' %}">All</a></li>
+                {% for category in categories %}
+                    <li class="nav-item">
+                        <a class="nav-link category-link" href="{% url 'recipe_list' %}?category={{ category.name }}">{{ category.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
         {% block content %}
         {% endblock %}
     </div>
 
-    <!-- Footer -->
-<footer>
-    <p>&copy; 2025 No Crumbs. Built with ❤️ by Viola Ranjha.</p>
-</footer>
-
+    <!-- 📌 Footer -->
+    <footer class="footer mt-auto py-3 bg-dark text-white">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 No Crumbs - Created by <strong>Viola Ranjha</strong></p>
+        </div>
+    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
