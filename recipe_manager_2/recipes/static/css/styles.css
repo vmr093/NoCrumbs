@@ -1,0 +1,141 @@
+/* 🎨 General Styles - Brown & Red Theme */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5e6ca; /* Warm beige background */
+    color: #4d2e1f; /* Deep brown text */
+}
+
+/* 🎨 Navbar Styling */
+.navbar {
+    background-color: #6d4c41; /* Warm brown */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar Links */
+.navbar .nav-link {
+    color: #fbe9e7; /* Soft pinkish-white */
+    font-weight: bold;
+    padding: 10px 15px;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Underline Effect on Hover */
+.navbar .nav-link:hover {
+    color: #ff7043; /* Vibrant red */
+}
+
+.navbar .nav-link::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #ff7043; /* Red underline effect */
+    transition: width 0.3s ease-in-out;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar .nav-link:hover::after {
+    width: 100%;
+}
+
+/* 🎨 Recipe Cards */
+.recipe-card {
+    background: #fff6e6; /* Light warm cream */
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out;
+    border: 2px solid #8d6e63; /* Brown border */
+}
+
+.recipe-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 🎨 Buttons */
+.btn-primary {
+    background-color: #8d6e63; /* Warm brown */
+    border-color: #8d6e63;
+}
+
+.btn-primary:hover {
+    background-color: #5d4037; /* Darker brown */
+    border-color: #5d4037;
+}
+
+.btn-danger {
+    background-color: #d84315; /* Deep red */
+    border-color: #bf360c;
+}
+
+.btn-danger:hover {
+    background-color: #bf360c; /* Darker red */
+    border-color: #d84315;
+}
+
+.btn-warning {
+    background-color: #ff7043; /* Vibrant red-orange */
+    border-color: #ff7043;
+}
+
+.btn-warning:hover {
+    background-color: #d84315;
+    border-color: #d84315;
+}
+
+/* 🎨 Form Styling */
+form {
+    background: #ffebee; /* Soft pinkish background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #d84315; /* Red border */
+}
+
+/* 🎨 Delete Confirmation */
+.delete-confirm {
+    background: #ffccbc; /* Warm peach */
+    padding: 20px;
+    border: 2px solid #ff7043;
+    border-radius: 8px;
+    color: #4d2e1f; /* Deep brown text */
+}
+
+/* 🎨 Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #6d4c41; /* Warm brown */
+    color: white;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* 🎨 Style for Recipe Manager Title */
+.recipe-title {
+    font-size: 3rem; /* Makes it larger */
+    color: #8B0000; /* Dark red */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 🎨 No Crumbs Navbar Title */
+.no-crumbs-title {
+    font-size: 1.8rem;  /* Make it slightly bigger */
+    color: white !important; /* Ensure it's white */
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* 🍪 Style for the Cookie Icon */
+.no-crumbs-title i {
+    margin-right: 8px;
+    font-size: 1.6rem;  /* Slightly bigger cookie icon */
+    color: #ffcc80;  /* Light orange (cookie color) */
+}

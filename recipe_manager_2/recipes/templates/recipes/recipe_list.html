@@ -2,13 +2,15 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="mb-4">Your Recipes</h1>
-    <a href="{% url 'recipe_create' %}" class="btn btn-primary mb-3">Add New Recipe</a>
+    <h1 class="recipe-title">Recipe Manager</h1>
+    <div class="text-center mb-3">
+        <a href="{% url 'recipe_create' %}" class="btn btn-primary">Add New Recipe</a>
+    </div>
 
     <div class="row">
         {% for recipe in recipes %}
             <div class="col-md-4">
-                <div class="card shadow-sm mb-4">
+                <div class="card recipe-card shadow-sm mb-4">
                     <div class="card-body">
                         <h5 class="card-title">{{ recipe.name }}</h5>
                         <p class="card-text"><strong>Prep Time:</strong> {{ recipe.prep_time }} mins</p>
@@ -19,7 +21,7 @@
                 </div>
             </div>
         {% empty %}
-            <p>No recipes yet. <a href="{% url 'recipe_create' %}">Add one</a></p>
+            <p class="text-center">No recipes yet. <a href="{% url 'recipe_create' %}">Add one</a></p>
         {% endfor %}
     </div>
 </div>
