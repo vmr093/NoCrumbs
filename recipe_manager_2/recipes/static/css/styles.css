@@ -1,6 +1,21 @@
-/* 🎨 General Styles - Brown & Red Theme */
+/* 🎨 Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Pacifico&family=Quicksand:wght@300;400;700&display=swap');
+
+/* 🎨 Full Page Layout (Ensures Footer Stays at Bottom) */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 🎨 Main Content Wrapper */
+.main-content {
+    flex: 1; /* Pushes footer to bottom */
+}
+
+/* 🎨 General Styles - Warm, Inviting Theme */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     background-color: #f5e6ca; /* Warm beige background */
     color: #4d2e1f; /* Deep brown text */
 }
@@ -17,6 +32,7 @@ body {
     font-weight: bold;
     padding: 10px 15px;
     position: relative;
+    font-family: 'Quicksand', sans-serif;
     transition: color 0.3s ease-in-out;
 }
 
@@ -42,137 +58,12 @@ body {
     width: 100%;
 }
 
-/* 🎨 Recipe Cards */
-.recipe-card {
-    background: #fff6e6; /* Light warm cream */
-    border-radius: 12px;
-    transition: transform 0.2s ease-in-out;
-    border: 2px solid #8d6e63; /* Brown border */
-}
-
-.recipe-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* 🎨 Buttons */
-.btn-primary {
-    background-color: #8d6e63; /* Warm brown */
-    border-color: #8d6e63;
-}
-
-.btn-primary:hover {
-    background-color: #5d4037; /* Darker brown */
-    border-color: #5d4037;
-}
-
-.btn-danger {
-    background-color: #d84315; /* Deep red */
-    border-color: #bf360c;
-}
-
-.btn-danger:hover {
-    background-color: #bf360c; /* Darker red */
-    border-color: #d84315;
-}
-
-.btn-warning {
-    background-color: #ff7043; /* Vibrant red-orange */
-    border-color: #ff7043;
-}
-
-.btn-warning:hover {
-    background-color: #d84315;
-    border-color: #d84315;
-}
-
-/* 🎨 Form Styling */
-.form-container {
-    background: #fff6e6; /* Light warm cream */
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-    border: 2px solid #8d6e63; /* Brown border */
-    max-width: 600px; /* Set a max width */
-    margin: 0 auto; /* Center the form */
-    text-align: left; /* Align text to the left */
-}
-
-/* 📝 Form Fields */
-.form-container label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #4d2e1f; /* Dark brown */
-    text-align: left; /* Left-align labels */
-}
-
-.form-container input,
-.form-container textarea,
-.form-container select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #8d6e63;
-    border-radius: 6px;
-    background-color: #fff;
-    font-size: 1rem;
-    margin-bottom: 15px;
-    display: block; /* Ensure full width */
-}
-
-/* 📝 Improve Textarea */
-.form-container textarea {
-    min-height: 120px; /* Larger text area */
-    resize: vertical;
-}
-
-/* 🎨 Submit Button */
-.btn-submit {
-    background-color: #d84315; /* Deep red */
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 6px;
-    padding: 10px 15px;
-    width: 100%;
-    display: block;
-}
-
-.btn-submit:hover {
-    background-color: #bf360c;
-}
-
-/* 🎨 Cancel Button */
-.btn-cancel {
-    background-color: #8d6e63; /* Warm brown */
-    color: white;
-    border-radius: 6px;
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.btn-cancel:hover {
-    background-color: #5d4037;
-}
-
-/* 🎨 Style for Recipe Manager Title */
-.recipe-title {
-    font-size: 3rem; /* Makes it larger */
-    color: #8B0000; /* Dark red */
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* 🎨 No Crumbs Navbar Title */
+/* 🍪 No Crumbs Title (Fun Handwritten Font) */
 .no-crumbs-title {
-    font-size: 1.8rem;  /* Make it slightly bigger */
-    color: white !important; /* Ensure it's white */
+    font-size: 2rem;  
+    color: white !important; 
     font-weight: bold;
+    font-family: 'Pacifico', cursive;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -181,25 +72,117 @@ body {
 /* 🍪 Style for the Cookie Icon */
 .no-crumbs-title i {
     margin-right: 8px;
-    font-size: 1.6rem;  /* Slightly bigger cookie icon */
+    font-size: 1.8rem;  
     color: #ffcc80;  /* Light orange (cookie color) */
 }
 
-/* 🎨 Delete Confirmation */
-.delete-confirm {
-    background: #ffccbc; /* Warm peach */
-    padding: 20px;
-    border: 2px solid #ff7043;
-    border-radius: 8px;
-    color: #4d2e1f; /* Deep brown text */
+/* 🎨 Recipe Cards */
+.recipe-card {
+    background: #fff6e6; /* Light warm cream */
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out;
+    border: 2px solid #8d6e63; /* Brown border */
+    font-family: 'Merriweather', serif;
+    height: 100%; /* Makes all cards equal in height */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 🎨 Make All Cards the Same Length */
+.recipe-card .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.recipe-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 🎨 Keep Buttons in One Row & Make Them Minimalistic */
+.recipe-card .btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto; /* Push buttons to the bottom */
+}
+
+/* 🎨 Minimalistic Button Styling */
+.recipe-card .btn {
+    flex: 1;
+    margin: 3px;
+    padding: 6px 10px; /* Smaller padding for a sleek look */
+    font-size: 0.8rem; /* Reduce font size for minimal look */
+    border-radius: 5px;
+}
+
+/* 🎨 Minimal Button Colors */
+.btn-primary {
+    background-color: transparent;
+    color: #5c6bc0; /* Blue */
+    border: 1px solid #5c6bc0;
+}
+
+.btn-warning {
+    background-color: transparent;
+    color: #ffb74d; /* Orange */
+    border: 1px solid #ffb74d;
+}
+
+.btn-danger {
+    background-color: transparent;
+    color: #d32f2f; /* Red */
+    border: 1px solid #d32f2f;
+}
+
+.btn-success {
+    background-color: transparent;
+    color: #43a047; /* Green */
+    border: 1px solid #43a047;
+}
+
+/* 🎨 Button Hover Effects */
+.btn-primary:hover {
+    background-color: #5c6bc0;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #ffb74d;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #43a047;
+    color: white;
+}
+
+
+/* 🎨 Form Styling */
+.form-container {
+    background: #fff6e6; /* Light warm cream */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #8d6e63; /* Brown border */
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    font-family: 'Merriweather', serif;
 }
 
 /* 🎨 Footer */
 footer {
-    text-align: center;
-    padding: 20px;
     background: #6d4c41; /* Warm brown */
     color: white;
-    margin-top: 20px;
+    text-align: center;
+    padding: 15px;
     font-weight: bold;
+    margin-top: auto;
+    width: 100%;
 }

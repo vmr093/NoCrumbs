@@ -3,25 +3,27 @@
 {% block content %}
 <div class="container">
     <h1 class="recipe-title">Recipe Manager</h1>
-    <div class="text-center mb-3">
-        <a href="{% url 'recipe_create' %}" class="btn btn-primary">Add New Recipe</a>
-    </div>
 
     <div class="row">
         {% for recipe in recipes %}
             <div class="col-md-4">
                 <div class="card recipe-card shadow-sm mb-4">
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ recipe.name }}</h5>
                         <p class="card-text"><strong>Prep Time:</strong> {{ recipe.prep_time }} mins</p>
-                        <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-outline-primary btn-sm">View</a>
-                        <a href="{% url 'recipe_update' recipe.id %}" class="btn btn-outline-secondary btn-sm">Edit</a>
-                        <a href="{% url 'recipe_delete' recipe.id %}" class="btn btn-outline-danger btn-sm">Delete</a>
+
+                        <!-- Buttons Container -->
+                        <div class="mt-auto d-flex justify-content-between">
+                            <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-primary btn-sm">👀 View</a>
+                            <a href="{% url 'recipe_update' recipe.id %}" class="btn btn-warning btn-sm">✏️ Edit</a>
+                            <a href="{% url 'recipe_delete' recipe.id %}" class="btn btn-danger btn-sm">🗑 Delete</a>
+                            <a href="{% url 'favorite_recipe' recipe.id %}" class="btn btn-success btn-sm">⭐ Favorite</a>
+                        </div>
                     </div>
                 </div>
             </div>
         {% empty %}
-            <p class="text-center">No recipes yet. <a href="{% url 'recipe_create' %}">Add one</a></p>
+            <p class="text-center">No recipes yet.</p>
         {% endfor %}
     </div>
 </div>

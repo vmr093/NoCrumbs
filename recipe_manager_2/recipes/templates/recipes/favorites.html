@@ -1,0 +1,24 @@
+{% extends "recipes/base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="recipe-title">Your Favorite Recipes</h1>
+
+    <div class="row">
+        {% for favorite in favorites %}
+            <div class="col-md-4">
+                <div class="card recipe-card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ favorite.recipe.name }}</h5>
+                        <p class="card-text"><strong>Prep Time:</strong> {{ favorite.recipe.prep_time }} mins</p>
+                        <a href="{% url 'recipe_detail' favorite.recipe.id %}" class="btn btn-outline-primary btn-sm">View</a>
+                        <a href="{% url 'favorite_recipe' favorite.recipe.id %}" class="btn btn-outline-danger btn-sm">❌ Unfavorite</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center">You haven't favorited any recipes yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
