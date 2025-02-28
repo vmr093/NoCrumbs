@@ -7,7 +7,7 @@
 ---
 
 ## 🚀 About the Project
-**No Crumbs** is a full-stack web application designed for food enthusiasts who want an intuitive way to save, categorize, and share their favorite recipes. Built with **Next.js, Tailwind CSS, and MongoDB**, it offers a sleek and user-friendly interface for effortless recipe management.
+**No Crumbs** is a full-stack web application designed for food enthusiasts who want an intuitive way to save, categorize, and share their favorite recipes. Built with **Django, Bootstrap CSS, and PostgreSQL**, it offers a sleek and user-friendly interface for effortless recipe management.
 
 ### ✨ Features
 - 📌 **Save Recipes** – Easily add new recipes and categorize them.
@@ -21,13 +21,10 @@
 ## 🛠 Tech Stack
 | Technology   | Purpose                                   |
 |-------------|-------------------------------------------|
-| **Next.js**  | Frontend framework for React-based UI   |
+| **Django**  | Frontend framework for React-based UI   |
 | **bootstrap** | CSS framework 
-| **MongoDB**  | NoSQL database for storing recipes      |
-| **Mongoose** | ODM for interacting with MongoDB       |
-| **Express.js** | Backend framework for API handling  |
-| **Node.js**  | Server-side runtime                    |
-
+| **PostgreSQL**  | Database for storing recipes      |
+                  |
 ---
 
 ## 📸 Screenshots 
